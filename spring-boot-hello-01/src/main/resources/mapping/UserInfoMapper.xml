@@ -14,4 +14,28 @@
     id, user_name, user_age, user_birthday, user_sex, create_time, update_time
   </sql>
   
+  
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="com.lxy.spring_boot_hello_01.entity.UserInfo" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_info
+  </select>
+  
+  <insert id="saveUserInfo" parameterType="com.lxy.spring_boot_hello_01.entity.UserInfo" >
+    insert into user_info(user_name, user_age, user_birthday, user_sex, create_time, update_time)
+    values(#{userName},#{userAge}, #{userBirthday}, #{userSex}, #{createTime}, #{updateTime})
+  </insert>
+  
+  <update id="updateUserInfo" parameterType="com.lxy.spring_boot_hello_01.entity.UserInfo" >
+  	update user_info 
+  	set
+  	user_name = #{userName}, 
+	user_age = #{userAge}, 
+	user_birthday = #{userBirthday}, 
+	user_sex = #{userSex}, 
+	update_Time = #{updateTime} 
+	where id = #{id}
+  </update>
+  
+  
 </mapper>
