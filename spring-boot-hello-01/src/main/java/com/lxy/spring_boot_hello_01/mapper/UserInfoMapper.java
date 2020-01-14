@@ -2,15 +2,14 @@ package com.lxy.spring_boot_hello_01.mapper;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
 import com.lxy.spring_boot_hello_01.entity.UserInfo;
 
+import tk.mybatis.springboot.util.MyMapper;
+
 @Mapper
-public interface UserInfoMapper {
+public interface UserInfoMapper  extends MyMapper<UserInfo> {
 	
 //	@Select("select id id, user_name userName, user_age userAge, user_birthday userBirthday, user_sex userSex, create_time createTime, update_time updateTime from user_info")
 	List<UserInfo> selectAll();

@@ -24,4 +24,9 @@ public class UserInfoService {
 	public void updateUserInfo(UserInfo userInfo) {
 		userInfoMapper.updateUserInfo(userInfo);
 	}
+	
+	public UserInfo getUserInfoById(int userInfoId) {
+		
+		return userInfoMapper.selectByPrimaryKey(userInfoId);
+	}
 }
