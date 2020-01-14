@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.lxy.spring_boot_hello_01.entity.UserInfo;
 import com.lxy.spring_boot_hello_01.service.UserInfoService;
 
@@ -51,5 +53,16 @@ public class UserInfoController {
 	@GetMapping("/userInfo/{id}")
 	public UserInfo getUserInfoById(@PathVariable("id") int userInfoId) {
 		return userInfoService.getUserInfoById(userInfoId);
+	}
+	
+	@GetMapping("/userInfo/page/{pageNum}/{pageSize}")
+	public PageInfo<UserInfo> getUserInfoPage(@PathVariable("pageNum") int pageNum, @PathVariable("pageSize") int pageSize) {
+		
+		//紧跟在这个语句之后的查询即可实现分页
+		PageHelper.startPage(pageNum, pageSize);
+		List<UserInfo> userInfoList = userInfoService.getUserInfoByPage();
+		PageInfo<UserInfo> pageInfo = new PageInfo<UserInfo>(userInfoList);
+		
+		return pageInfo;
 	}
 }

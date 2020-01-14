@@ -29,4 +29,8 @@ public class UserInfoService {
 		
 		return userInfoMapper.selectByPrimaryKey(userInfoId);
 	}
+	
+	public List<UserInfo> getUserInfoByPage() {
+		return userInfoMapper.selectAll();
+	}
 }
