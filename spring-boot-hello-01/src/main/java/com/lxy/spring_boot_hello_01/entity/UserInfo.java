@@ -159,4 +159,13 @@ public class UserInfo {
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
+
+	@Override
+	public String toString() {
+		return "UserInfo [id=" + id + ", userName=" + userName + ", userAge=" + userAge + ", userBirthday="
+				+ userBirthday + ", userSex=" + userSex + ", createTime=" + createTime + ", updateTime=" + updateTime
+				+ "]";
+	}
+    
+    
 }
