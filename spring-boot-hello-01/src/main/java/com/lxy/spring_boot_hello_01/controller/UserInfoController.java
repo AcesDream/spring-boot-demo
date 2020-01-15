@@ -65,4 +65,30 @@ public class UserInfoController {
 		
 		return pageInfo;
 	}
+	
+	@GetMapping("/saveWithT")
+	public String saveUserInfoWithTransactional() {
+		
+		try {
+			userInfoService.saveUserInfoWithTransactional();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		
+		return "rollback";
+	}
+	
+	@GetMapping("/saveNoT")
+	public String saveUserInfoNoTransactional() {
+		
+		try {
+			userInfoService.saveUserInfoNoTransactional();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return "not rollback";
+	}
 }
