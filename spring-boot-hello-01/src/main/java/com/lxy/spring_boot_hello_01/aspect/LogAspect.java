@@ -39,4 +39,29 @@ public class LogAspect {
         	logger.error("异常信息：{}", e);
 		}
     }
+	
+	
+	// 定义切点。将AOP和自定义注解进行结合的关键所在
+    @Pointcut("@annotation(LogAnnotation)")
+    public void annotationPointCut() {
+    }   
+    
+    @Before("annotationPointCut()")
+    public void printParamAnno(JoinPoint joinPoint){
+        //获取请求的方法
+        Signature sig = joinPoint.getSignature();
+        String method = joinPoint.getTarget().getClass().getName() + "." + sig.getName();
+
+        //获取请求的参数
+        Object[] args = joinPoint.getArgs();
+        
+        try {
+        	String params = objectMapper.writeValueAsString(args);
+        	//打印请求参数
+            logger.info("annotation aop " + method + ":" + params);
+        } catch (Exception e) {
+			// TODO: handle exception
+        	logger.error("异常信息：{}", e);
+		}
+    }
 }
