@@ -16,7 +16,9 @@ public class MyEventPublisherController {
 	private MyEventPublisher myEventPublisher;
 
     @GetMapping("/publish/{message}")
-    public void publish(@PathVariable("message") String message) {
+    public String publish(@PathVariable("message") String message) {
     	myEventPublisher.publish(message);
+    	
+    	return "event publish success";
     }
 }

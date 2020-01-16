@@ -15,6 +15,7 @@ public class MyEventPublisher {
     ApplicationContext context;
     
     public void publish(String message) {
+    	System.out.println(context.getClass());
         context.publishEvent(new MyEvent(this, message));
     }
 }
