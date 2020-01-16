@@ -7,6 +7,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+/**
+ * @Scheduled默认是不并发执行的
+ * @author lxy
+ *
+ */
 @Component
 public class ScheduledTask {
 	
