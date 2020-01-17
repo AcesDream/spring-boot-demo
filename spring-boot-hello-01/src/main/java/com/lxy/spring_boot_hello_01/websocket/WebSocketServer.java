@@ -18,6 +18,8 @@ import org.springframework.stereotype.Component;
 
 
 /**
+ * 
+ * 参考链接：https://blog.csdn.net/moshowgame/article/details/80275084
  * @author zhengkai.blog.csdn.net
  */
 @ServerEndpoint("/imserver/{userId}")
